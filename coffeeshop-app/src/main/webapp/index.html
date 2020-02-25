@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Business Casual - Start Bootstrap Theme</title>
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+	crossorigin="anonymous"></script>
+<!-- Bootstrap core CSS -->
+<link href="./resources/vendor/bootstrap/css/bootstrap.css"
+	rel="stylesheet" type="text/css" />
+<!-- Custom fonts for this template -->
+<link
+	href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i"
+	rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="./resources/css/business-casual.min.css" rel="stylesheet">
+<link href="./resources/vendor/fontawesome-free/css/all.min.css"
+	rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+	<h1 class="site-heading text-center text-white d-none d-lg-block">
+		<span class="site-heading-upper text-primary mb-3"><i
+			class="fas fa-mug-hot"></i> Buy Coffee Online <i
+			class="fas fa-mug-hot"></i> </span> <span class="site-heading-lower">RestBucks
+		</span>
+	</h1>
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+		<div class="container">
+			<a
+				class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none"
+				href="#">RestBucks</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" id="burger" aria-controls="navbarResponsive"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav mx-auto">
+					<li class="nav-item px-lg-4"><a class="nav-link" role="button"
+						data-toggle="modal" data-target="#logoutModal"
+						aria-haspopup="true" aria-expanded="false" id="logoutgetter"> <span
+							class="text-uppercase text-expanded" id="currentUserName"></span>
+							<i class="far fa-user" id="userAccLogo"></i>
+					</a></li>
+					<li class="nav-item active px-lg-4"><a
+						class="nav-link text-uppercase text-expanded" href="index.html">Home
+							<span class="sr-only">(current)</span>
+					</a></li>
+					<li class="nav-item px-lg-4"><a
+						class="nav-link text-uppercase text-expanded" id="order" href="order.html">Order Coffee</a>
+					</li>
+					<li class="nav-item px-lg-4"><a
+						class="nav-link text-uppercase text-expanded" id="loginButton"
+						data-toggle="modal" data-target="#loginModal">Log In</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<section class="page-section clearfix">
+		<div class="container">
+			<div class="intro">
+				<img class="intro-img img-fluid mb-3 mb-lg-0 rounded"
+					src="./resources/img/intro.jpg" alt="">
+				<div class="intro-text left-0 text-center bg-faded p-5 rounded">
+					<h2 class="section-heading mb-4">
+						<span class="section-heading-upper">Fresh Coffee</span> <span
+							class="section-heading-lower">Worth Drinking</span>
+					</h2>
+					<p class="mb-3">Every cup of our quality artisan coffee starts
+						with locally sourced, hand picked ingredients. Once you try it,
+						our coffee will be a blissful addition to your everyday morning
+						routine - we guarantee it!</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<!-- Modal -->
+	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Log In</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form class="user" action="">
+						<div class="form-group">
+							<input type="text" class="form-control form-control-user"
+								id="username" placeholder="Username" required="true">
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control form-control-user"
+								id="password" placeholder="Password" required="true">
+						</div>
+						<a class="btn btn-primary btn-user btn-block" id="submit1">
+							Login </a>
+						<hr>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
+				</div>
+			</div>
+			<!-- Logout Modal -->
+		</div>
+	</div>
+	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">
+						<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+						Ready to Leave?
+					</h5>
+					<button class="close" type="button" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">Select "Logout" below if you are ready
+					to end your current session.</div>
+				<div class="modal-footer">
+					<a class="btn btn-primary" href='#' id="logout"
+						onclick="redirect()">Logout</a>
+					<button class="btn btn-secondary" type="button"
+						data-dismiss="modal">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Bootstrap core JavaScript -->
+	<script src="./resources//vendor/jquery/jquery.min.js"></script>
+	<script src="./resources//vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="./resources/js/login.js"></script>
+</body>
+
+</html>

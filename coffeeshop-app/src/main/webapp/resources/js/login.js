@@ -1,13 +1,25 @@
 $(document).ready(function() {
-
-    //DOM manipulation code
-	
+	var currentLocation = window.location;
+	//DOM manipulation code
+	$("#order").show();
 	$("#currentUserName").hide();
 	$("#userAccLogo").hide();
-	$("#order").click(function(){
+	if(sessionStorage.getItem("type") != "Customer" ){
+		$("#order").click(function(){
+			$("#order").prop('disabled', true);
+			alert("You must sign in first!");
+		});
+		if(currentLocation == "http://localhost:8080/coffeeshop-app/order.html" | currentLocation == "http://localhost:8080/coffeeshop-app/order.html#" | currentLocation == "http://localhost:8080/coffeeshop-app/index.html"){
+			$("#order").hide();
+			$("#order").prop('disabled', true);
+			
+		}
+	}
+
+	if(window.location == "http://localhost:8080/coffeeshop-app/order.html"){
 		$("#order").prop('disabled', true);
-		alert("You must sign in first!");
-	});
+		$("#order").hide();
+	}
 	if(sessionStorage.getItem("type") == "Customer" || sessionStorage.getItem("type") == "Worker"){
 		var user = getUser(sessionStorage.getItem("name"));
 		var username = user.username;
@@ -58,11 +70,11 @@ function validate() {
 					sessionStorage.setItem("type", "Worker");
 					sessionStorage.setItem("name", username);
 				} 
-				
+
 				else if (type == 'Customer'){
-                    location.reload();
-                    sessionStorage.setItem("type", "Customer");
-                    sessionStorage.setItem("name", username);
+					location.reload();
+					sessionStorage.setItem("type", "Customer");
+					sessionStorage.setItem("name", username);
 				}
 			}
 			else
@@ -82,7 +94,7 @@ function validate() {
 				}
 			}
 		}
-		
+
 	}
 
 	function attemptChecking(c) {
@@ -91,8 +103,8 @@ function validate() {
 		document.getElementById("submit1").disabled = c;
 		return true;
 	}
-	
-	
+
+
 
 }
 
@@ -115,11 +127,11 @@ var getUser = function (userName)
 				}
 				else
 					alert('No such user exists.');	
-							
+
 			},
 			error : function(data) {
 				alert('No such user exists.');
-		
+
 			}
 
 		});

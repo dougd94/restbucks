@@ -74,34 +74,22 @@
 	<section class="page-section clearfix">
 		<div class="container" style="background-color: white;">
 			<div class="display col-12">
-				<h3>ORDERS</h3>
-				<form >
-					<div class="form-group">
-						<label for="coffee">Coffee</label> <select class="form-control"
-							id="coffee">
-							<option>Cappuchino</option>
-							<option>Americano</option>
-							<option>Latte</option>
-						</select>
+				<h3>MY ORDERS</h3>
+					<div class="leftarea">
+						<table id="table_id_users" class="display col-12">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>USERNAME</th>
+									<th>TYPE</th>
+									<th>EDIT</th>
+
+								</tr>
+							</thead>
+							<tbody id="table_body_users">
+							</tbody>
+						</table>
 					</div>
-					<div class="form-group">
-						<label for="milk">Milk</label> <select class="form-control"
-							id="milk">
-							<option>Whole</option>
-							<option>Skim</option>
-							<option>Soy</option>
-						</select>
-					</div>
-					<div class="form-group">
-						<label for="sugar">Sugar</label> <select class="form-control"
-							id="sugar">
-							<option>1</option>
-							<option>2</option>
-							<option>None</option>
-						</select>
-					</div>
-					<button class="btn btn-primary" id="submit01">Submit</button>
-				</form>
 			</div>
 
 		</div>

@@ -7,7 +7,7 @@ $(document).ready(function() {
 			"coffee" : $('#coffee').val(),
 			"milk" : $('#milk').val(),
 			"sugar" : $('#sugar').val(),
-			"status" : "Placed"
+			"status" : "Awaiting Payment"
 		});
 	};
 
@@ -23,7 +23,7 @@ $(document).ready(function() {
 			dataType : "json",
 			data : formToJSON(),
 			success : function(data, textStatus, jqXHR) {
-//				alert("Order created successfully");
+				alert("Order created successfully");
 				location.replace("myOrders.html");
 			},
 			error : function(jqXHR, textStatus, errorThrown) {

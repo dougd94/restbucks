@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +29,8 @@
 <link href="./resources/css/business-casual.min.css" rel="stylesheet">
 <link href="./resources/vendor/fontawesome-free/css/all.min.css"
 	rel="stylesheet" type="text/css" />
-
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
 </head>
 
 <body>
@@ -53,6 +55,9 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav mx-auto">
+					<li class="nav-item px-lg-4"><a
+						class="nav-link text-uppercase text-expanded" href="order.html"
+						id="myOrders">Order A Coffee</a></li>
 					<li class="nav-item px-lg-4"><a class="nav-link" role="button"
 						data-toggle="modal" data-target="#logoutModal"
 						aria-haspopup="true" aria-expanded="false"> <span
@@ -73,26 +78,66 @@
 
 	<section class="page-section clearfix">
 		<div class="container" style="background-color: white;">
-			<div class="display col-12" style="padding:3rem;">
+			<div class="display col-12" style="padding: 3rem;">
 				<h3>MY ORDERS</h3>
-					<div class="leftarea">
-						<table id="table_id_users" class="display col-12">
-							<thead>
-								<tr>
-									<th>ID</th>
-									<th>USERNAME</th>
-									<th>TYPE</th>
-									<th>EDIT</th>
+				<div class="leftarea">
+					<table id="table_id_order" class="display col-12">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>COFFEE</th>
+								<th>MILK</th>
+								<th>SUGAR</th>
+								<th>STATUS</th>
 
-								</tr>
-							</thead>
-							<tbody id="table_body_users">
-							</tbody>
-						</table>
-					</div>
+							</tr>
+						</thead>
+						<tbody id="table_body_order">
+						</tbody>
+					</table>
+				</div>
 			</div>
+			<div class="modal" id="editModal">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title"><span id="editTitle"></span></h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
 
-		</div>
+						<!-- Modal body -->
+						<div class="modal-body">
+							<div id="userSuccess" class="alert alert-success" role="alert"></div>
+							<div id="userError" class="alert alert-danger" role="alert"></div>
+							<div class="form-group">
+								<label for="coffee">Coffee</label> <select class="form-control"
+									id="coffee">
+									<option>Cappuchino</option>
+									<option>Americano</option>
+									<option>Latte</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="milk">Milk</label> <select class="form-control"
+									id="milk">
+									<option>Whole</option>
+									<option>Skim</option>
+									<option>Soy</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="sugar">Sugar</label> <select class="form-control"
+									id="sugar">
+									<option>1</option>
+									<option>2</option>
+									<option>None</option>
+								</select>
+							</div>
+							<button class="btn btn-primary" id="submit01">Submit</button>
+						</div>
+					</div>
+				</div>
+			</div>
 	</section>
 
 
@@ -161,7 +206,11 @@
 	<script src="./resources//vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript" src="./resources/js/login.js"></script>
 	<script type="text/javascript" src="./resources/js/order.js">
-	</script>
+		</script>
+	<script type="text/javascript" src="./resources/js/viewOrders.js">
+		</script>
+	<script type="text/javascript" charset="utf8"
+		src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
 </body>
 
 </html>

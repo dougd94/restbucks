@@ -1,14 +1,10 @@
 $(document).ready(function() {
 	var currentLocation = window.location;
 	//DOM manipulation code
-	$("#order").show();
+	$("#order").hide();
 	$("#currentUserName").hide();
 	$("#userAccLogo").hide();
 	if(sessionStorage.getItem("type") != "Customer" ){
-		$("#order").click(function(){
-			$("#order").prop('disabled', true);
-			alert("You must sign in first!");
-		});
 		if(currentLocation == "http://localhost:8080/coffeeshop-app/order.html" | currentLocation == "http://localhost:8080/coffeeshop-app/order.html#" | currentLocation == "http://localhost:8080/coffeeshop-app/index.html"){
 			$("#order").hide();
 			$("#order").prop('disabled', true);
@@ -21,6 +17,9 @@ $(document).ready(function() {
 		$("#order").hide();
 	}
 	if(sessionStorage.getItem("type") == "Customer" || sessionStorage.getItem("type") == "Worker"){
+		if(sessionStorage.getItem("type") == "Customer"){
+			$("#order").show();
+		}
 		var user = getUser(sessionStorage.getItem("name"));
 		var username = user.username;
 		$("#order").prop('disabled', false);

@@ -19,6 +19,16 @@ var findAll=function(){
 	});
 };
 
+var formToJSONUserUpdate=function(){
+	var orderID = $('#orderID').val();
+	return JSON.stringify({
+		"orderID": userId == "" ? null : orderID,
+				"coffee": $('#coffee').val(), 
+				"milk": SHA1($('#milk').val()),
+				"sugar":  $('#sugar').val(),
+				"status" : "Awaiting Payment"
+	});
+};
 
 
 var renderList = function(data){
@@ -37,53 +47,47 @@ var renderList = function(data){
 		$(document).on("click",'#edit'+orderID, function(){
 			console.log("Edit clicked for " + orderID);
 			$("#editTitle").html("EDITING ORDER #"+order.orderID);
-			$('#editUserId').val(order.orderID);
-			$('#editName').val(order.coffee);
-			$('#editPassword').val(order.milk);
-			$('#editType').val(order.sugar);
+			$("#orderID").val(order.orderID);
+			$('#coffee').val(order.coffee);
+			$('#milk').val(order.milk);
+			$('#sugar').val(order.sugar);
 
 
-			$('.modal').on("click",'#btnSave', function(){
-				//var passwordValidationRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
-				username = user.username;
-				password = SHA1($('#editPassword').val());
-				userRole = $('#editType').val();
+			$('.modal').on("click",'#save', function(){
+				$("#orderID").val(order.orderID);
+				$('#coffee').val(order.coffee);
+				$('#milk').val(order.milk);
+				$('#sugar').val(order.sugar);
 
 
 
-				if(password == "" || userRole == "Choose User Type" ){
-					$('#editModal').modal('show');
-					console.log("editModal");
-				} else {
-					$.ajax({
-						type: 'PUT',
-						contentType: 'application/json',
-						url: rootURL + '/' + $('#editName').val(),
-						dataType: "json",
-						data: formToJSONUserUpdate(),
-						success: function(data, textStatus, jqXHR){
-							$('#editUserId').val(user.userId);
-							$('#editName').val(user.username);
-							$('#editPassword').val(user.password);
-							$('#editType').val(user.type);
-							//$('#userUpdateModal').modal('toggle');
-//							alert('User updated successfully');
-							$("#userSuccess").html("User updated successfully");
-							$("#userSuccess").show();
-							location.reload(true);
-						},
-						error: function(jqXHR, textStatus, errorThrown){
-//							alert('Error in put ajax');
-							$("#userError").html("Error occured");
-							$("#userError").show();
 
-						}
-					}) 
-				}
+				$.ajax({
+					type: 'PUT',
+					contentType: 'application/json',
+					url: rootURL + '/' + $('#editName').val(),
+					dataType: "json",
+					data: formToJSONUserUpdate(),
+					success: function(data, textStatus, jqXHR){
+						$('#orderID').val(order.orderID);
+						$('#coffee').val(order.coffee);
+						$('#milk').val(order.milk);
+						$('#sugar').val(order.sugar);
+						//$('#userUpdateModal').modal('toggle');
+						alert('User updated successfully');
+						location.reload(true);
+					},
+					error: function(jqXHR, textStatus, errorThrown){
+						alert('Error');
+
+
+					}
+				})
+
 			});
 
 		});
 
-});
-$('#table_id_order').DataTable();	
+	});
+	$('#table_id_order').DataTable();	
 };

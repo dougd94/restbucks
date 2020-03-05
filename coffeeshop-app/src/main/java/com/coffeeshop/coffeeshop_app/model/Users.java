@@ -26,14 +26,14 @@ public class Users {
 		password="";
 		type="";
 	}
-	public int getUserId() {
+
+
+	public int getUserID() {
 		return userID;
 	}
-
-	public void setUserId(int userId) {
-		this.userID = userId;
+	public void setUserID(int userID) {
+		this.userID = userID;
 	}
-
 	public String getUsername() {
 		return username;
 	}

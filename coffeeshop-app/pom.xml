@@ -68,6 +68,14 @@
 				for your project, such as Arquillian for testing) and the jboss-javaee-7.0-with-hibernate 
 				stack you can read this as the JBoss stack of the Java EE 7 APIs, with extras 
 				from the Hibernate family of projects) -->
+			<!-- https://mvnrepository.com/artifact/org.jboss.arquillian.junit/arquillian-junit-container -->
+			<dependency>
+				<groupId>org.jboss.arquillian.junit</groupId>
+				<artifactId>arquillian-junit-container</artifactId>
+				<version>1.6.0.Final</version>
+				<scope>test</scope>
+			</dependency>
+
 			<dependency>
 				<groupId>org.wildfly.bom</groupId>
 				<artifactId>jboss-javaee-7.0-with-tools</artifactId>
@@ -389,9 +397,6 @@
 			<!-- Seperate profiles are provided for running all tests, including Arquillian 
 				tests that execute in the specified container -->
 			<id>default</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
 			<build>
 				<plugins>
 					<plugin>
@@ -437,6 +442,9 @@
 		</profile>
 		<profile>
 			<id>jacoco</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 			<dependencies>
 				<dependency>
 					<groupId>org.jacoco</groupId>

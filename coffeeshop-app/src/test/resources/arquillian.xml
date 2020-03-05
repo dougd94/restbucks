@@ -35,10 +35,6 @@
 			<property name="managementPort">9990</property>
 		</configuration>
 	</container>
-	<extension qualifier="jacoco">
-		<property name="includes">org.foo.*; org.bar.*</property>
-		<property name="excludes">org.bar.baz.*</property>
-		<property name="appendAsmLibrary">true</property>
-	</extension>
+
 </arquillian>
 

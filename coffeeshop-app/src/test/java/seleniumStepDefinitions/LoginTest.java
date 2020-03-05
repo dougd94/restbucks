@@ -2,6 +2,9 @@ package seleniumStepDefinitions;
 
 import static org.junit.Assert.assertEquals;
 
+import javax.persistence.EntityManager;
+
+import org.junit.Ignore;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -30,6 +33,7 @@ public class LoginTest {
 	WebElement order;
 	private UserDAO dao = new UserDAO();
 	private UserUtilsDAO utilsDAO;
+	
 	@Before
 	public void beforeTest() {
 		//setup the chromedriver using WebDriverManager
@@ -38,19 +42,17 @@ public class LoginTest {
 		options.addArguments("--start-maximized", "--headless", "--no-sandbox");
 		WebDriverManager.chromedriver().version("80.0.3987.106").setup();
 		driver = new ChromeDriver(options);
-		utilsDAO.deleteTable();
-		Users users = new Users();
-		users.setPassword("customer");
-		users.setType("Customer");
-		users.setUserID(1);
-		users.setUsername("Customer");
-		dao.createNewUser(users);
-		Users users2 = new Users();
-		users2.setPassword("worker");
-		users2.setType("Worker");
-		users2.setUserID(2);
-		users2.setUsername("Worker");
-		dao.createNewUser(users2);
+//		utilsDAO.deleteTable();
+//		Users users = new Users();
+//		users.setPassword("customer");
+//		users.setType("Customer");
+//		users.setUsername("Customer");
+//		dao.createNewUser(users);
+//		Users users2 = new Users();
+//		users2.setPassword("worker");
+//		users2.setType("Worker");
+//		users2.setUsername("Worker");
+//		dao.createNewUser(users2);
 		//			System.setProperty("webdriver.chrome.driver", "C:\\Users\\a00207675\\Documents\\chromedriver.exe");
 		//			driver = new ChromeDriver();
 	}

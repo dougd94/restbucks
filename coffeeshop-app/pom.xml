@@ -95,7 +95,7 @@
 			<artifactId>jconsole</artifactId>
 			<version>1.8</version>
 			<scope>system</scope>
-			<systemPath>C:\Program Files\Java\jdk1.8.0_212\lib\jconsole.jar</systemPath>
+			<systemPath>C:\Program Files (x86)\Java\jdk1.8.0_212\lib\jconsole.jar</systemPath>
 		</dependency>
 
 		<!-- First declare the APIs we depend on and need for compilation. All 
@@ -190,15 +190,20 @@
 		<!-- Optional, but highly recommended -->
 		<!-- Arquillian allows you to test enterprise code such as EJBs and Transactional(JTA) 
 			JPA from JUnit/TestNG -->
-
+		<dependency>
+			<groupId>org.jboss.arquillian.junit</groupId>
+			<artifactId>arquillian-junit-container</artifactId>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.jboss.arquillian.protocol</groupId>
 			<artifactId>arquillian-protocol-servlet</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.jboss.arquillian.junit</groupId>
-			<artifactId>arquillian-junit-container</artifactId>
+			<groupId>org.jboss.arquillian</groupId>
+			<artifactId>arquillian-spi</artifactId>
+			<version>1.0.0.Alpha5</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- jar file for uploading the files -->

@@ -35,9 +35,9 @@ public class UserWSTester {
 		return ShrinkWrap
 				.create(JavaArchive.class, "Test.jar")
 				.addClasses(UserDAO.class, Users.class,
-						JaxRsActivator.class,UserWSTester.class,
+						JaxRsActivator.class,UserWS.class,
 						UserUtilsDAO.class)
-
+				
 				.addAsManifestResource("META-INF/persistence.xml",
 						"persistence.xml")
 				.addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");

@@ -14,7 +14,6 @@ import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 
 import com.coffeeshop.coffeeshop_app.data.OrderUtilsDAO;
@@ -67,13 +66,13 @@ public class OrderIntegration {
 	}
 
 	@Test
-	public void testGetAllUsers() {
+	public void testGetAllOrder() {
 		List<Orders> orderList = dao.getAllOrders();
 		assertEquals("Data fetch = data persisted", orderList.size(), 1);
 	}
 	
 	@Test
-	public void updateAUser() {
+	public void updateOrder() {
 		orders.setMilk("milk2");
 		dao.update(orders);
 		List<Orders> orderList = dao.getAllOrders();
@@ -81,7 +80,7 @@ public class OrderIntegration {
 	}
 	
 	@Test
-	public void deleteAUser() {
+	public void deleteOrder() {
 		dao.delete(1);
 		List<Orders> orderList = dao.getAllOrders();
 		assertEquals("Data fetch = data persisted", orderList.size(), 0);

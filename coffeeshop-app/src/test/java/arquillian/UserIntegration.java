@@ -30,6 +30,7 @@ public class UserIntegration {
 	@Deployment
 	public static Archive<?> createTestArchive() {
 		return ShrinkWrap
+				
 				.create(JavaArchive.class, "Test.jar")
 				.addClasses(Users.class, UserDAO.class,
 						JaxRsActivator.class, UserWS.class, UserUtilsDAO.class)
@@ -75,7 +76,7 @@ public class UserIntegration {
 		user.setUsername("newname");
 		userDAO.update(user);
 		List<Users> userList = userDAO.getAllUsers();
-		assertEquals("Data fetch = data persisted", userList.size(), 1);
+		assertEquals("Data fetch = data persisted", userList.size(), 2);
 	}
 	
 	@Test

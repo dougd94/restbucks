@@ -27,7 +27,7 @@ import com.coffeeshop.coffeeshop_app.rest.UserWS;
 
 
 @RunWith(Arquillian.class)
-public class UserWSTester {
+public class UserWSTest {
 
 	
 	@Deployment

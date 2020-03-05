@@ -14,26 +14,26 @@ import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 
-import com.coffeeshop.coffeeshop_app.data.UserDAO;
-import com.coffeeshop.coffeeshop_app.data.UserUtilsDAO;
-import com.coffeeshop.coffeeshop_app.model.Users;
+import com.coffeeshop.coffeeshop_app.data.OrderUtilsDAO;
+import com.coffeeshop.coffeeshop_app.data.OrdersDAO;
+import com.coffeeshop.coffeeshop_app.model.Orders;
 import com.coffeeshop.coffeeshop_app.rest.JaxRsActivator;
-import com.coffeeshop.coffeeshop_app.rest.UserWS;
+import com.coffeeshop.coffeeshop_app.rest.OrderWS;
 
 
 @RunWith(Arquillian.class)
-public class UserIntegration {
+public class OrderIntegrationTest {
 
 	@Deployment
 	public static Archive<?> createTestArchive() {
+
+	    
 		return ShrinkWrap
-				
 				.create(JavaArchive.class, "Test.jar")
-				.addClasses(Users.class, UserDAO.class,
-						JaxRsActivator.class, UserWS.class, UserUtilsDAO.class)
+				.addClasses(Orders.class, OrdersDAO.class,
+						JaxRsActivator.class, OrderWS.class, OrderUtilsDAO.class)
 //				.addPackage(org.apache.commons.codec.digest.DigestUtils.class.getPackage())
 //				.addPackage(org.apache.commons.codec.binary.Hex.class.getPackage())
 				//    .addPackage(EventCauseDAO.class.getPackage())
@@ -45,44 +45,46 @@ public class UserIntegration {
 	}
 
 	@EJB
-	private UserWS userWS;
+	private OrderWS WS;
 	@EJB
-	private UserDAO userDAO;
+	private OrdersDAO dao;
 	@EJB
-	private UserUtilsDAO utilsDAO;
+	private OrderUtilsDAO utils;
 
-	private Users user;
+	private Orders orders;
 
 	@Before
 	public void setUp() {
 		//this function means that we start with an empty table
 		//it should be possible to test with an in memory db for efficiency
-		utilsDAO.deleteTable();
-		user = new Users();
-		user.setUsername("Customer");
-		user.setPassword("customer");
-		user.setType("Customer");
-		userDAO.createNewUser(user);
+		utils.deleteTable();
+		orders = new Orders();
+		orders.setCoffee("cof");
+		orders.setMilk("milk");
+		orders.setOrderID(1);
+		orders.setStatus("status");
+		orders.setSugar(1);
+		dao.createNewOrder(orders);
 	}
 
 	@Test
-	public void testGetAllUsers() {
-		List<Users> userList = userDAO.getAllUsers();
-		assertEquals("Data fetch = data persisted", userList.size(), 1);
+	public void testGetAllOrder() {
+		List<Orders> orderList = dao.getAllOrders();
+		assertEquals("Data fetch = data persisted", orderList.size(), 1);
 	}
 	
 	@Test
-	public void updateAUser() {
-		user.setUsername("newname");
-		userDAO.update(user);
-		List<Users> userList = userDAO.getAllUsers();
-		assertEquals("Data fetch = data persisted", userList.size(), 2);
+	public void updateOrder() {
+		orders.setMilk("milk2");
+		dao.update(orders);
+		List<Orders> orderList = dao.getAllOrders();
+		assertEquals("Data fetch = data persisted", orderList.size(), 1);
 	}
 	
 	@Test
-	public void deleteAUser() {
-		userDAO.delete("Customer");
-		List<Users> userList = userDAO.getAllUsers();
-		assertEquals("Data fetch = data persisted", userList.size(), 0);
+	public void deleteOrder() {
+		dao.delete(1);
+		List<Orders> orderList = dao.getAllOrders();
+		assertEquals("Data fetch = data persisted", orderList.size(), 0);
 	}
 }

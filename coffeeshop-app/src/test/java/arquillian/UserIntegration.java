@@ -80,7 +80,7 @@ public class UserIntegration {
 	
 	@Test
 	public void deleteAUser() {
-		userDAO.delete("Admin");
+		userDAO.delete("Customer");
 		List<Users> userList = userDAO.getAllUsers();
 		assertEquals("Data fetch = data persisted", userList.size(), 0);
 	}

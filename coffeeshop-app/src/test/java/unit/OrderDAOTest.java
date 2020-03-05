@@ -43,22 +43,6 @@ class OrderDAOTest {
 		assertSame(expected, actual);
 	}
 	
-	@Test
-	public void testSaveOrders() {
-		Orders orders = new Orders();
-		orders.setCoffee("cof");
-		orders.setMilk("milk");
-		orders.setOrderID(1);
-		orders.setStatus("status");
-		orders.setSugar(1);
-		when(em.merge(orders)).thenReturn(orders);
-		actual.add(em.merge(orders));
-		dao.update(orders);
-		when(em.createQuery("SELECT u FROM Orders u where Order.orderID = ?")).thenReturn(query);
-		when(query.setParameter(0, 20)).thenReturn(query);
-		when(query.getResultList()).thenReturn(expected);
-		Orders loaded = dao.getOrderByID(orders.getOrderID());
-		assertEquals(orders, loaded);
-	}
+
 	
 }

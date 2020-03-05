@@ -8,9 +8,12 @@ import org.openqa.selenium.WebElement;
 
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.coffeeshop.coffeeshop_app.data.UserDAO;
+import com.coffeeshop.coffeeshop_app.data.UserUtilsDAO;
+import com.coffeeshop.coffeeshop_app.model.Users;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -25,7 +28,8 @@ public class LoginTest {
 	public static WebDriver driver;
 
 	WebElement order;
-
+	private UserDAO dao = new UserDAO();
+	private UserUtilsDAO utilsDAO;
 	@Before
 	public void beforeTest() {
 		//setup the chromedriver using WebDriverManager
@@ -34,6 +38,19 @@ public class LoginTest {
 		options.addArguments("--start-maximized", "--headless", "--no-sandbox");
 		WebDriverManager.chromedriver().version("80.0.3987.106").setup();
 		driver = new ChromeDriver(options);
+		utilsDAO.deleteTable();
+		Users users = new Users();
+		users.setPassword("customer");
+		users.setType("Customer");
+		users.setUserID(1);
+		users.setUsername("Customer");
+		dao.createNewUser(users);
+		Users users2 = new Users();
+		users2.setPassword("worker");
+		users2.setType("Worker");
+		users2.setUserID(2);
+		users2.setUsername("Worker");
+		dao.createNewUser(users2);
 		//			System.setProperty("webdriver.chrome.driver", "C:\\Users\\a00207675\\Documents\\chromedriver.exe");
 		//			driver = new ChromeDriver();
 	}

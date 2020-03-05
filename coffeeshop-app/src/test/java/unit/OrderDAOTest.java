@@ -39,7 +39,7 @@ class OrderDAOTest {
 	}
 	
 	@Test
-	public void testGetAllUOrders() {
+	public void testGetAllOrders() {
 		assertSame(expected, actual);
 	}
 	

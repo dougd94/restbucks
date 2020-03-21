@@ -59,11 +59,10 @@
 							class="text-uppercase text-expanded" id="currentUserName"></span>
 							<i class="far fa-user" id="userAccLogo"></i>
 					</a></li>
-					<li class="nav-item active px-lg-4"><a
-						class="nav-link text-uppercase text-expanded" href="#">Home
-							<span class="sr-only">(current)</span>
+					<li class="nav-item  px-lg-4"><a
+						class="nav-link text-uppercase text-expanded" href="index.html">Home
 					</a></li>
-					<li class="nav-item px-lg-4"><a
+					<li class="nav-item active px-lg-4"><a
 						class="nav-link text-uppercase text-expanded" id="SeeOrders" href="#">See Orders</a>
 					</li>
 					<li class="nav-item px-lg-4"><a
@@ -75,27 +74,86 @@
 	</nav>
 
 	<section class="page-section clearfix">
-		<div class="container">
-			<div class="leftarea">
-						<table id="table_id_users" class="display col-12">
-							<h3>ORDERS</h3>
-							<thead>
-								<tr>
-									<th>ID</th>
-									<th>TYPE</th>
-									<th>EXTRAS</th>
-									<th>EDIT</th>
+		<div class="container" style="background-color: white;">
+			<div class="display col-12" style="padding: 3rem;">
+				<h3>CURRENT ORDERS</h3>
+				<div class="leftarea">
+					<table id="table_id_order" class="display col-12">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>COFFEE</th>
+								<th>MILK</th>
+								<th>SUGAR</th>
+								<th>STATUS</th>
+								<th>EDIT</th>
 
-								</tr>
-							</thead>
-							<tbody id="table_body_users">
-							</tbody>
-						</table>
+							</tr>
+						</thead>
+						<tbody id="table_body_order">
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="modal" id="editModal">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">
+								<span id="editTitle"></span>
+							</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+
+						<!-- Modal body -->
+						<div class="modal-body">
+							<div id="userSuccess" class="alert alert-success" role="alert"></div>
+							<div id="userError" class="alert alert-danger" role="alert"></div>
+							<form>
+								<div class="form-group">
+									<label for="userId">Id:</label> <input type="text"
+										class="form-control" id="orderID" disabled>
+								</div>
+								<div class="form-group">
+									<label for="coffee">Coffee</label> <select class="form-control"
+										id="coffee">
+										<option>Cappuchino</option>
+										<option>Americano</option>
+										<option>Latte</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="milk">Milk</label> <select class="form-control"
+										id="milk">
+										<option>Whole</option>
+										<option>Skim</option>
+										<option>Soy</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="sugar">Sugar</label> <select class="form-control"
+										id="sugar">
+										<option>1</option>
+										<option>2</option>
+										<option>None</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="status">Status</label> <select class="form-control"
+										id="status">
+										<option>Awaiting Payment</option>
+										<option>Processing</option>
+										<option>Ready For Collection</option>
+										<option>Order Finished</option>
+									</select>
+								</div>
+								<button class="btn btn-primary" id="save">Save Changes</button>
+							</form>
+						</div>
 					</div>
-		</div>
+				</div>
+			</div>
 	</section>
-
-
 	<!-- Modal -->
 	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -160,6 +218,8 @@
 	<script src="./resources//vendor/jquery/jquery.min.js"></script>
 	<script src="./resources//vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript" src="./resources/js/login.js"></script>
+	<script type="text/javascript" src="./resources/js/worker.js">
+	</script>
 </body>
 
 </html>

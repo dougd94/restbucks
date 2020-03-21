@@ -1,7 +1,9 @@
 var createURL = "http://localhost:8080/coffeeshop-app/rest/orders";
 
 $(document).ready(function() {
-	$("order")
+	if(sessionStorage.getItem("type") != "Customer" ){
+		location.replace('index.html');
+	}
 	var formToJSON = function() {
 		return JSON.stringify({
 			"coffee" : $('#coffee').val(),

@@ -22,13 +22,15 @@ var findAll=function(){
 var formToJSONUserUpdate=function(){
 	var orderID = $('#orderID').val();
 	return JSON.stringify({
-		"orderID": userId == "" ? null : orderID,
-				"coffee": $('#coffee').val(), 
-				"milk": SHA1($('#milk').val()),
-				"sugar":  $('#sugar').val(),
-				"status" : "Awaiting Payment"
+		"orderID": orderID,
+		"coffee": $('#coffee').val(), 
+		"milk": $('#milk').val(),
+		"sugar":  $('#sugar').val(),
+		"status" : "Awaiting Payment"
 	});
 };
+
+
 
 
 var renderList = function(data){
@@ -54,10 +56,10 @@ var renderList = function(data){
 
 
 			$('.modal').on("click",'#save', function(){
-				$("#orderID").val(order.orderID);
-				$('#coffee').val(order.coffee);
-				$('#milk').val(order.milk);
-				$('#sugar').val(order.sugar);
+				$('#orderID').val(order.orderID);
+				$('#coffee').val($('#coffee').val());
+				$('#milk').val( $('#milk').val());
+				$('#sugar').val( $('#sugar').val());
 
 
 
@@ -73,8 +75,7 @@ var renderList = function(data){
 						$('#coffee').val(order.coffee);
 						$('#milk').val(order.milk);
 						$('#sugar').val(order.sugar);
-						//$('#userUpdateModal').modal('toggle');
-						alert('User updated successfully');
+						alert('Coffee updated successfully');
 						location.reload(true);
 					},
 					error: function(jqXHR, textStatus, errorThrown){

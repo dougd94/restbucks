@@ -7,18 +7,24 @@ $(document).ready(function() {
 	if(sessionStorage.getItem("type") != "Customer" ){
 		if(currentLocation == "http://localhost:8080/coffeeshop-app/order.html" | currentLocation == "http://localhost:8080/coffeeshop-app/order.html#" | currentLocation == "http://localhost:8080/coffeeshop-app/index.html"){
 			$("#order").hide();
+			$("#SeeOrders").hide();
 			$("#order").prop('disabled', true);
-			
+
 		}
 	}
 
 	if(window.location == "http://localhost:8080/coffeeshop-app/order.html"){
 		$("#order").prop('disabled', true);
 		$("#order").hide();
+		$("#SeeOrders").hide();
 	}
 	if(sessionStorage.getItem("type") == "Customer" || sessionStorage.getItem("type") == "Worker"){
 		if(sessionStorage.getItem("type") == "Customer"){
 			$("#order").show();
+			$("#SeeOrders").hide();
+		}
+		if(sessionStorage.getItem("type") == 'Worker'){
+			$("#SeeOrders").show();
 		}
 		var user = getUser(sessionStorage.getItem("name"));
 		var username = user.username;

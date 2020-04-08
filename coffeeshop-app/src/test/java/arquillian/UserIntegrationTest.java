@@ -34,10 +34,6 @@ public class UserIntegrationTest {
 				.create(JavaArchive.class, "Test.jar")
 				.addClasses(Users.class, UserDAO.class,
 						JaxRsActivator.class, UserWS.class, UserUtilsDAO.class)
-//				.addPackage(org.apache.commons.codec.digest.DigestUtils.class.getPackage())
-//				.addPackage(org.apache.commons.codec.binary.Hex.class.getPackage())
-				//    .addPackage(EventCauseDAO.class.getPackage())
-				//this line will pick up the production db
 				.addAsManifestResource("META-INF/persistence.xml",
 						"persistence.xml")
 				.addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");

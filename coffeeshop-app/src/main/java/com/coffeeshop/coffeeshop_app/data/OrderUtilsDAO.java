@@ -13,7 +13,7 @@ public class OrderUtilsDAO {
     private EntityManager em;
     
 	public void deleteTable(){
-		em.createQuery("DELETE FROM Users").executeUpdate();
+		em.createQuery("DELETE FROM Orders").executeUpdate();
 		em.createNativeQuery("ALTER TABLE Orders AUTO_INCREMENT=1")
 		.executeUpdate();
 		

@@ -34,9 +34,6 @@ public class OrderIntegrationTest {
 				.create(JavaArchive.class, "Test.jar")
 				.addClasses(Orders.class, OrdersDAO.class,
 						JaxRsActivator.class, OrderWS.class, OrderUtilsDAO.class)
-//				.addPackage(org.apache.commons.codec.digest.DigestUtils.class.getPackage())
-//				.addPackage(org.apache.commons.codec.binary.Hex.class.getPackage())
-				//    .addPackage(EventCauseDAO.class.getPackage())
 				//this line will pick up the production db
 				.addAsManifestResource("META-INF/persistence.xml",
 						"persistence.xml")
@@ -50,13 +47,13 @@ public class OrderIntegrationTest {
 	private OrdersDAO dao;
 	@EJB
 	private OrderUtilsDAO utils;
-
 	private Orders orders;
 
 	@Before
 	public void setUp() {
 		//this function means that we start with an empty table
 		//it should be possible to test with an in memory db for efficiency
+		
 		utils.deleteTable();
 		orders = new Orders();
 		orders.setCoffee("cof");
@@ -64,6 +61,7 @@ public class OrderIntegrationTest {
 		orders.setOrderID(1);
 		orders.setStatus("status");
 		orders.setSugar(1);
+		orders.setOrderID(1);
 		dao.createNewOrder(orders);
 	}
 

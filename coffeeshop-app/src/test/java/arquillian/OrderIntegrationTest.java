@@ -51,9 +51,6 @@ public class OrderIntegrationTest {
 
 	@Before
 	public void setUp() {
-		//this function means that we start with an empty table
-		//it should be possible to test with an in memory db for efficiency
-		
 		utils.deleteTable();
 		orders = new Orders();
 		orders.setCoffee("cof");

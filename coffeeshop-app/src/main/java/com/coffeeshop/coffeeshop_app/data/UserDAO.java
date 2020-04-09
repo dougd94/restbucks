@@ -31,31 +31,4 @@ public class UserDAO {
         return query.getResultList();
     }
 	
-	public Users getUserByID(int id) {
-		Query query = em.createQuery("SELECT u FROM Users u where User.userID = ?");
-		query.setParameter(0, id);
-		return (Users) query.getResultList().get(0);
-	}
-
-    public Users getUserByUserName(String username) {
-        return em.find(Users.class, username);
-    }
-	
-
-	public void update(Users user) {
-		em.merge(user);
-	}
-
-	public void delete(String username) {
-		
-		em.remove(getUserByUserName(username));
-	}
-	
-	
-	public void createNewUser(Users user) {
-		em.persist(user);
-		System.out.println("User created");
-	}
-	
-	
 }

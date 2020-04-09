@@ -53,32 +53,13 @@ public class UserIntegrationTest {
 	public void setUp() {
 		//this function means that we start with an empty table
 		//it should be possible to test with an in memory db for efficiency
-		utilsDAO.deleteTable();
-		user = new Users();
-		user.setUsername("Customer");
-		user.setPassword("customer");
-		user.setType("Customer");
-		userDAO.createNewUser(user);
+
 	}
 
 	@Test
 	public void testGetAllUsers() {
 		List<Users> userList = userDAO.getAllUsers();
-		assertEquals("Data fetch = data persisted", userList.size(), 1);
-	}
-	
-	@Test
-	public void updateAUser() {
-		user.setUsername("newname");
-		userDAO.update(user);
-		List<Users> userList = userDAO.getAllUsers();
 		assertEquals("Data fetch = data persisted", userList.size(), 2);
 	}
-	
-	@Test
-	public void deleteAUser() {
-		userDAO.delete("Customer");
-		List<Users> userList = userDAO.getAllUsers();
-		assertEquals("Data fetch = data persisted", userList.size(), 0);
-	}
+
 }

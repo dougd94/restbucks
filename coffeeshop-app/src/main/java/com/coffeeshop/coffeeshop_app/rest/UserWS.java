@@ -29,41 +29,11 @@ public class UserWS {
 	private UserDAO userDAO;
 	
 	@GET
-	@Path("/{userName}")
-	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-	public Response validate(@PathParam("userName") String userName) {
-		Users user = userDAO.getUserByUserName(userName);
-		return Response.status(200).entity(user).build();
-	}	
-	
-	@GET
 	@Produces({MediaType.APPLICATION_JSON })
 	public Response findAllUsers() {
 		List<Users> userList = userDAO.getAllUsers();
 		return Response.status(200).entity(userList).build();
 	}
 	
-	@POST
-	@Produces({ MediaType.APPLICATION_JSON})
-	public Response create(Users user) {
-		userDAO.createNewUser(user);
-		return Response.status(201).entity(user).build();
-	}
-	
-	@PUT
-	@Path("/{username}")
-	@Consumes("application/json")
-	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-	public Response upadateUsers(Users user) {
-		userDAO.update(user);
-		return  Response.status(200).entity(user).build();
-	}
 
-	@DELETE
-	@Path("/{username}")
-	public Response deleteUser(@PathParam("username") String username) {
-		userDAO.delete(username);
-		return Response.status(204).build();
-	}
-	
 }

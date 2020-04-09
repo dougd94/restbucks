@@ -23,7 +23,7 @@ import com.coffeeshop.coffeeshop_app.data.OrdersDAO;
 import com.coffeeshop.coffeeshop_app.model.Orders;
 import com.coffeeshop.coffeeshop_app.rest.JaxRsActivator;
 import com.coffeeshop.coffeeshop_app.rest.OrderWS;
-import com.networkmanager.networkmanager_app.model.Users;
+
 
 
 
@@ -39,7 +39,6 @@ public class OrderWSTest {
 				.addClasses(OrdersDAO.class, Orders.class,
 						JaxRsActivator.class,OrderWS.class,
 						OrderUtilsDAO.class)
-
 				.addAsManifestResource("META-INF/persistence.xml",
 						"persistence.xml")
 				.addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
@@ -84,7 +83,7 @@ public class OrderWSTest {
 		order = new Orders();
 		order.setCoffee("coff");
 		order.setMilk("milk");
-		order.setOrderID(1);
+		order.setOrderID(2);
 		order.setStatus("staus");
 		order.setSugar(1);
 		Response response=Ws.create(order);
@@ -94,7 +93,7 @@ public class OrderWSTest {
 		assertEquals(order.getSugar(), 1);
 		assertEquals(order.getMilk(), "milk");
 		assertEquals(order.getStatus(), "staus");
-		assertEquals(order.getOrderID(), 1);
+		assertEquals(order.getOrderID(), 2);
 	}
 
 
